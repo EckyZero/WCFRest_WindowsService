@@ -10,11 +10,11 @@ namespace RestWCFWinService
 
         static void Main()
         {
-            //#if DEBUG
-            //            MyRestWCFRestWinSer myservice = new MyRestWCFRestWinSer();
-            //            myservice.OnDebug();
-            //            System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite);
-            //#else
+            #if DEBUG
+                        MyRestWCFRestWinSer myservice = new MyRestWCFRestWinSer();
+                        myservice.OnDebug();
+                        System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite);
+            #else
             ServiceBase[] ServicesToRun;
 
             ServicesToRun = new ServiceBase[]
@@ -23,7 +23,7 @@ namespace RestWCFWinService
             };
 
             ServiceBase.Run(ServicesToRun);
-            //#endif
+            #endif
         }
 
     }
