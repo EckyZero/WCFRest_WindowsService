@@ -1,5 +1,6 @@
 ﻿using System.ServiceProcess;
 using System.ServiceModel;
+using System.Data.SQLite;
 
 namespace RestWCFWinService
 {
@@ -20,6 +21,8 @@ namespace RestWCFWinService
         {
             oServiceHost = new ServiceHost(typeof(RestWCFServiceLibrary.RestWCFServiceLibrary));
             oServiceHost.Open();
+
+            RestWCFServiceLibrary.Application.Startup();
         }
 
         protected override void OnStop()

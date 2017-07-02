@@ -5,6 +5,13 @@ namespace RestWCFServiceLibrary
 {
     public class RestWCFServiceLibrary : IRestWCFServiceLibrary
     {
+
+
+        public RestWCFServiceLibrary()
+        {
+            Console.WriteLine("");
+        }
+
         public string XMLData(string id)
         {
             return Data(id);
