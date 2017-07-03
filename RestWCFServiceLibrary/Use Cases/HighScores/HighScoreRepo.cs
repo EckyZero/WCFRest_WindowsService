@@ -1,8 +1,10 @@
-﻿using RestWCFServiceLibrary.Models;
+﻿using RestWCFServiceLibrary.Repos;
+using RestWCFServiceLibrary.Use_Cases.HighScores.Interfaces;
+using RestWCFServiceLibrary.Use_Cases.HighScores.Models;
 using System.Collections.Generic;
 using System.Data.SQLite;
 
-namespace RestWCFServiceLibrary.Repos
+namespace RestWCFServiceLibrary.Use_Cases.HighScores
 {
     class HighScoreRepo : IHighScoreRepo
     {

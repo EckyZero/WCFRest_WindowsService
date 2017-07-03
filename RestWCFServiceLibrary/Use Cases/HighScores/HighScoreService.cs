@@ -1,12 +1,8 @@
-﻿using System;
+﻿using RestWCFServiceLibrary.Use_Cases.HighScores.Interfaces;
+using RestWCFServiceLibrary.Use_Cases.HighScores.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RestWCFServiceLibrary.Models;
-using RestWCFServiceLibrary.Repos;
 
-namespace RestWCFServiceLibrary.Services
+namespace RestWCFServiceLibrary.Use_Cases.HighScores
 {
     internal class HighScoreService : IHighScoreService
     {

@@ -1,9 +1,9 @@
-﻿using RestWCFServiceLibrary.Models;
+﻿using RestWCFServiceLibrary.Use_Cases.HighScores.Models;
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 
-namespace RestWCFServiceLibrary
+namespace RestWCFServiceLibrary.Use_Cases.HighScores.Interfaces
 {
     [ServiceContract]
     public interface IHighScoreController

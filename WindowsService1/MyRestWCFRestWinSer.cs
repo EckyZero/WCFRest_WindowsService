@@ -1,6 +1,7 @@
 ﻿using System.ServiceProcess;
 using System.ServiceModel;
-using System.Data.SQLite;
+using RestWCFServiceLibrary.Use_Cases.HighScores;
+using RestWCFServiceLibrary.Use_Cases.Teachers;
 
 namespace RestWCFWinService
 {
@@ -21,10 +22,10 @@ namespace RestWCFWinService
 
         protected override void OnStart(string[] args)
         {
-            oStudentServiceHost = new ServiceHost(typeof(RestWCFServiceLibrary.HighScoreController));
+            oStudentServiceHost = new ServiceHost(typeof(HighScoreController));
             oStudentServiceHost.Open();
 
-            oTeacherServiceHost = new ServiceHost(typeof(RestWCFServiceLibrary.TeacherService));
+            oTeacherServiceHost = new ServiceHost(typeof(TeachersController));
             oTeacherServiceHost.Open();
 
             RestWCFServiceLibrary.Application.Startup();
