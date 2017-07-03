@@ -1,13 +1,9 @@
 ﻿using RestWCFServiceLibrary.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RestWCFServiceLibrary.Controllers
+namespace RestWCFServiceLibrary
 {
     [ServiceContract]
     public interface IHighScoreController
@@ -15,22 +11,31 @@ namespace RestWCFServiceLibrary.Controllers
         [OperationContract]
         [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "highscores")]
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "/")]
         IEnumerable<HighScore> GetAll();
 
         [OperationContract]
         [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "highscores/{id}")]
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "/{id}")]
         HighScore Get(string id);
 
         [OperationContract]
         [WebInvoke(Method = "POST",
+            RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "highscores")]
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "/")]
         void Post(HighScore highscore);
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "/{id}")]
+        void Delete(string id);
     }
 }

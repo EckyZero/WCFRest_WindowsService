@@ -7,11 +7,11 @@ using System.Data.SQLite;
 
 namespace RestWCFServiceLibrary
 {
-    public class RestWCFServiceLibrary : IRestWCFServiceLibrary
+    public class HighScoreController : IHighScoreController
     {
         private IHighScoreService _highscoreService;
 
-        private RestWCFServiceLibrary()
+        private HighScoreController()
         {
             // TODO: Replace this once DI is setup
             var database = new DatabaseConnection();

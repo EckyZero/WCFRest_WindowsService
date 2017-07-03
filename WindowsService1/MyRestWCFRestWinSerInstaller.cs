@@ -16,7 +16,7 @@
             process = new ServiceProcessInstaller();
             process.Account = ServiceAccount.LocalSystem;
             service = new ServiceInstaller();
-            service.ServiceName = "Demo";
+            service.ServiceName = "MyDemo";
             service.Description = "WCF REST API Hosting on Windows Service";
             service.DelayedAutoStart = true;
             Installers.Add(process);
