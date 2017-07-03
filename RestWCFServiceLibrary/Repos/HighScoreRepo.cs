@@ -86,6 +86,20 @@ namespace RestWCFServiceLibrary.Repos
             return highscores;
         }
 
+        public void Delete(int id)
+        {
+            using (var connection = _dbConnection.GetDatabaseConnection())
+            {
+                connection.Open();
+
+                var sql = "delete from " + _tableName + " where score = " + id;
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
         private void CreateTableIfNeeded()
         {
             if (!_dbConnection.TableExists(_tableName))

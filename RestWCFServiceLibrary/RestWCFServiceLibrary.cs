@@ -40,5 +40,13 @@ namespace RestWCFServiceLibrary
         {
             _highscoreService.Create(highscore);
         }
+
+        public void Delete(string id)
+        {
+            // TODO: Input validation here
+            var formattedId = int.Parse(id);
+
+            _highscoreService.Delete(formattedId);
+        }
     }
 }

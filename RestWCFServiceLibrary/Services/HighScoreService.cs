@@ -22,6 +22,11 @@ namespace RestWCFServiceLibrary.Services
             _highscoreRepo.Create(highscore);
         }
 
+        public void Delete(int id)
+        {
+            _highscoreRepo.Delete(id);
+        }
+
         public HighScore Read(int id)
         {
             var highscore = _highscoreRepo.Read(id);

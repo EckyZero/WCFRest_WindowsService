@@ -10,10 +10,10 @@ namespace RestWCFServiceLibrary.Models
     [DataContract]
     public class HighScore
     {
-        [DataMember]
+        [DataMember(Name = "name", IsRequired = true)]
         public string Name { get; set; }
 
-        [DataMember]
+        [DataMember(Name = "score", IsRequired = true)]
         public int Score { get; set; }
 
         public HighScore(string name, int score)

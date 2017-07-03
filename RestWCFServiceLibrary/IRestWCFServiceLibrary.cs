@@ -29,5 +29,13 @@ namespace RestWCFServiceLibrary
             BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "highscores")]
         void Post(HighScore highscore);
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "highscores/{id}")]
+        void Delete(string id);
     }
 }

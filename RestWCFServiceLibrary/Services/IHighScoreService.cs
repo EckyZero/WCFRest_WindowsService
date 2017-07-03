@@ -14,5 +14,7 @@ namespace RestWCFServiceLibrary.Services
         HighScore Read(int id);
 
         IEnumerable<HighScore> ReadAll();
+
+        void Delete(int id);
     }
 }
