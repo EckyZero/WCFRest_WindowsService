@@ -1,23 +1,24 @@
-﻿using System;
+﻿using RestWCFServiceLibrary.Use_Cases.Teachers.Interfaces;
+using System;
 using System.Threading;
 
-namespace RestWCFServiceLibrary
+namespace RestWCFServiceLibrary.Use_Cases.Teachers
 {
-    public class StudentService : IStudentService
+    public class TeachersController : ITeachersController
     {
         private Timer timer;
         private int tickCount = 0;
 
-        public StudentService()
+        public TeachersController()
         {
             startTimer();
         }
 
-        protected void startTimer()
+        private void startTimer()
         {
             if (timer == null)
             {
-                Console.WriteLine("Starting timer in student service");
+                Console.WriteLine("Starting timer in teacher service");
 
                 //due time = time to wait before first execution of the method
                 //period = time to wait between subsequent executions
@@ -25,21 +26,21 @@ namespace RestWCFServiceLibrary
             }
         }
 
-        protected void stopTimer()
+        private void stopTimer()
         {
             if (timer != null)
             {
-                Console.WriteLine("Stopping timer in student service");
+                Console.WriteLine("Stopping timer in teacher service");
                 timer.Change(Timeout.Infinite, Timeout.Infinite);
                 timer.Dispose();
                 timer = null;
             }
         }
 
-        protected void TimerTick(object state)
+        private void TimerTick(object state)
         {
             ++tickCount;
-            Console.WriteLine("Timer ticked in student service: " + tickCount);
+            Console.WriteLine("Timer ticked in teacher service: " + tickCount);
 
             if (tickCount >= 5)
             {
@@ -47,19 +48,9 @@ namespace RestWCFServiceLibrary
             }
         }
 
-        public string XMLData(string id)
+        public string Get (string id)
         {
-            return Data(id);
-        }
-        public string JSONData(string id)
-        {
-            return Data(id);
-        }
-
-        private string Data(string id)
-        {
-            // logic
-            return "Data: " + id;
+            return "You entered id: " + id;
         }
     }
 }
