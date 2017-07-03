@@ -1,11 +1,15 @@
 ﻿using System.ServiceProcess;
 using System.ServiceModel;
+using RestWCFServiceLibrary.Use_Cases.HighScores;
+using RestWCFServiceLibrary.Use_Cases.Teachers;
 
 namespace RestWCFWinService
 {
     public partial class MyRestWCFRestWinSer : ServiceBase
     {
-        ServiceHost oServiceHost = null;
+        ServiceHost oStudentServiceHost = null;
+        ServiceHost oTeacherServiceHost = null;
+
         public MyRestWCFRestWinSer()
         {
             InitializeComponent();
@@ -18,16 +22,28 @@ namespace RestWCFWinService
 
         protected override void OnStart(string[] args)
         {
-            oServiceHost = new ServiceHost(typeof(RestWCFServiceLibrary.RestWCFServiceLibrary));
-            oServiceHost.Open();
+
+            oStudentServiceHost = new ServiceHost(typeof(HighScoresController));
+
+            oStudentServiceHost.Open();
+
+            oTeacherServiceHost = new ServiceHost(typeof(TeachersController));
+            oTeacherServiceHost.Open();
+
+            RestWCFServiceLibrary.Application.Startup();
         }
 
         protected override void OnStop()
         {
-            if (oServiceHost != null)
+            if (oStudentServiceHost != null)
             {
-                oServiceHost.Close();
-                oServiceHost = null;
+                oStudentServiceHost.Close();
+                oStudentServiceHost = null;
+            }
+            if (oTeacherServiceHost != null)
+            {
+                oTeacherServiceHost.Close();
+                oTeacherServiceHost = null;
             }
         }
     }
