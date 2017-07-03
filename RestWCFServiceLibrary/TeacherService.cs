@@ -1,6 +1,6 @@
 ﻿namespace RestWCFServiceLibrary
 {
-    public class RestWCFServiceLibrary : IRestWCFServiceLibrary
+    public class TeacherService : ITeacherService
     {
         public string XMLData(string id)
         {

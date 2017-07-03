@@ -4,7 +4,7 @@ using System.ServiceModel.Web;
 namespace RestWCFServiceLibrary
 {
     [ServiceContract]
-    public interface IRestWCFServiceLibrary
+    public interface ITeacherService
     {
         [OperationContract]
         [WebInvoke(Method = "GET", 
