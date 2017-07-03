@@ -40,10 +40,8 @@ namespace RestWCFServiceLibrary
             using (var scope = container.BeginLifetimeScope())
             {
                 var databaseConnection = scope.Resolve<IDatabaseConnection>();
-                var highscoreRepo = scope.Resolve<IHighScoreRepo>();
 
                 databaseConnection.CreateDatabase();
-                highscoreRepo.Insert("Erik", 1000);
             }
         }
     }

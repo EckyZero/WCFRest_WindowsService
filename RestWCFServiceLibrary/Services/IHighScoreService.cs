@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestWCFServiceLibrary.Repos
+namespace RestWCFServiceLibrary.Services
 {
-    interface IHighScoreRepo
+    interface IHighScoreService
     {
         void Create(HighScore highscore);
 
