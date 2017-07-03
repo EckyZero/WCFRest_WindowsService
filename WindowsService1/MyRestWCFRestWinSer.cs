@@ -1,5 +1,7 @@
 ﻿using System.ServiceProcess;
 using System.ServiceModel;
+using System.Threading;
+using System;
 
 namespace RestWCFWinService
 {
@@ -20,6 +22,8 @@ namespace RestWCFWinService
 
         protected override void OnStart(string[] args)
         {
+            Console.WriteLine("Windows service started");
+
             oStudentServiceHost = new ServiceHost(typeof(RestWCFServiceLibrary.StudentService));
             oStudentServiceHost.Open();
 
