@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SQLite;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RestWCFServiceLibrary.Repos
+{
+    internal interface IDatabaseConnection
+    {
+        void CreateDatabase();
+
+        SQLiteConnection GetDatabaseConnection();
+
+        bool TableExists(string tableName);
+    }
+}
