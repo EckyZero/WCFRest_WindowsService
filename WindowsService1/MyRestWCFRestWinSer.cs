@@ -5,7 +5,9 @@ namespace RestWCFWinService
 {
     public partial class MyRestWCFRestWinSer : ServiceBase
     {
-        ServiceHost oServiceHost = null;
+        ServiceHost oStudentServiceHost = null;
+        ServiceHost oTeacherServiceHost = null;
+
         public MyRestWCFRestWinSer()
         {
             InitializeComponent();
@@ -18,16 +20,24 @@ namespace RestWCFWinService
 
         protected override void OnStart(string[] args)
         {
-            oServiceHost = new ServiceHost(typeof(RestWCFServiceLibrary.RestWCFServiceLibrary));
-            oServiceHost.Open();
+            oStudentServiceHost = new ServiceHost(typeof(RestWCFServiceLibrary.StudentService));
+            oStudentServiceHost.Open();
+
+            oTeacherServiceHost = new ServiceHost(typeof(RestWCFServiceLibrary.TeacherService));
+            oTeacherServiceHost.Open();
         }
 
         protected override void OnStop()
         {
-            if (oServiceHost != null)
+            if (oStudentServiceHost != null)
             {
-                oServiceHost.Close();
-                oServiceHost = null;
+                oStudentServiceHost.Close();
+                oStudentServiceHost = null;
+            }
+            if (oTeacherServiceHost != null)
+            {
+                oTeacherServiceHost.Close();
+                oTeacherServiceHost = null;
             }
         }
     }

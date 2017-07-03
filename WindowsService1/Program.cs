@@ -15,14 +15,14 @@ namespace RestWCFWinService
                         myservice.OnDebug();
                         System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite);
             #else
-            ServiceBase[] ServicesToRun;
+                        ServiceBase[] ServicesToRun;
 
-            ServicesToRun = new ServiceBase[]
-            {
-                new MyRestWCFRestWinSer()
-            };
+                        ServicesToRun = new ServiceBase[]
+                        {
+                            new MyRestWCFRestWinSer()
+                        };
 
-            ServiceBase.Run(ServicesToRun);
+                        ServiceBase.Run(ServicesToRun);
             #endif
         }
 
