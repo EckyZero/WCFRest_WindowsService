@@ -6,12 +6,12 @@ using System.Data.SQLite;
 
 namespace RestWCFServiceLibrary.Use_Cases.HighScores
 {
-    class HighScoreRepo : IHighScoreRepo
+    class HighScoresRepo : IHighScoresRepo
     {
         IDatabaseConnection _dbConnection;
         const string _tableName = "highscores";
 
-        internal HighScoreRepo(IDatabaseConnection dbConnection)
+        internal HighScoresRepo(IDatabaseConnection dbConnection)
         {
             _dbConnection = dbConnection;
 

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace RestWCFServiceLibrary.Use_Cases.HighScores
 {
-    internal class HighScoreService : IHighScoreService
+    internal class HighScoresService : IHighScoresService
     {
-        private IHighScoreRepo _highscoreRepo;
+        private IHighScoresRepo _highscoreRepo;
 
-        internal HighScoreService(IHighScoreRepo highscoreRepo)
+        internal HighScoresService(IHighScoresRepo highscoreRepo)
         {
             _highscoreRepo = highscoreRepo;
         }

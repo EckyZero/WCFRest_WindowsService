@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RestWCFServiceLibrary.Use_Cases.HighScores.Interfaces
 {
-    internal interface IHighScoreRepo
+    internal interface IHighScoresRepo
     {
         void Create(HighScore highscore);
 

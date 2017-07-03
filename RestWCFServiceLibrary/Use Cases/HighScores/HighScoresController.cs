@@ -5,17 +5,17 @@ using System.Collections.Generic;
 
 namespace RestWCFServiceLibrary.Use_Cases.HighScores
 {
-    public class HighScoreController : IHighScoreController
+    public class HighScoresController : IHighScoresController
     {
-        private IHighScoreService _highscoreService;
+        private IHighScoresService _highscoreService;
 
-        private HighScoreController()
+        private HighScoresController()
         {
             // TODO: Replace this once DI is setup
             var database = new DatabaseConnection();
-            var highscoreRepo = new HighScoreRepo(database);
+            var highscoreRepo = new HighScoresRepo(database);
 
-            _highscoreService = new HighScoreService(highscoreRepo);
+            _highscoreService = new HighScoresService(highscoreRepo);
         }
 
         public IEnumerable<HighScore> GetAll()

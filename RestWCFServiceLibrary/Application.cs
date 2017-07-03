@@ -24,7 +24,7 @@ namespace RestWCFServiceLibrary
             var builder = new ContainerBuilder();
 
             builder.RegisterType<DatabaseConnection>().As<IDatabaseConnection>();
-            builder.RegisterType<HighScoreRepo>().As<IHighScoreRepo>();
+            builder.RegisterType<HighScoresRepo>().As<IHighScoresRepo>();
 
             var container = builder.Build();
 

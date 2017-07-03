@@ -6,7 +6,7 @@ using System.ServiceModel.Web;
 namespace RestWCFServiceLibrary.Use_Cases.HighScores.Interfaces
 {
     [ServiceContract]
-    public interface IHighScoreController
+    public interface IHighScoresController
     {
         [OperationContract]
         [WebInvoke(Method = "GET",
