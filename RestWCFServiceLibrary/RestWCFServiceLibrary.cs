@@ -1,69 +1,44 @@
-﻿using System;
+﻿using RestWCFServiceLibrary.Models;
+using RestWCFServiceLibrary.Repos;
+using RestWCFServiceLibrary.Services;
+using System;
+using System.Collections.Generic;
 using System.Data.SQLite;
 
 namespace RestWCFServiceLibrary
 {
     public class RestWCFServiceLibrary : IRestWCFServiceLibrary
     {
+        private IHighScoreService _highscoreService;
 
-
-        public RestWCFServiceLibrary()
+        private RestWCFServiceLibrary()
         {
-            Console.WriteLine("");
+            // TODO: Replace this once DI is setup
+            var database = new DatabaseConnection();
+            var highscoreRepo = new HighScoreRepo(database);
+
+            _highscoreService = new HighScoreService(highscoreRepo);
         }
 
-        public string XMLData(string id)
+        public IEnumerable<HighScore> GetAll()
         {
-            return Data(id);
-        }
-        public string JSONData(string id)
-        {
-            return Data(id);
+            var highscores = _highscoreService.ReadAll();
+
+            return highscores;
         }
 
-        private string Data(string id)
+        public HighScore Get(string id)
         {
-            SQLiteConnection m_dbConnection;
-            string sql;
-            SQLiteCommand command;
+            // TODO: Input validation here
+            var formattedId = int.Parse(id);
+            var highscores = _highscoreService.Read(formattedId);
 
-            if (!System.IO.File.Exists("MyDatabase.sqlite"))
-            {
-                SQLiteConnection.CreateFile("MyDatabase.sqlite");
+            return highscores;
+        }
 
-                m_dbConnection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
-                m_dbConnection.Open();
-
-                sql = "create table highscores (name varchar(20), score int)";
-
-                command = new SQLiteCommand(sql, m_dbConnection);
-                command.ExecuteNonQuery();
-
-                sql = "insert into highscores (name, score) values ('Me', 9001)";
-                command = new SQLiteCommand(sql, m_dbConnection);
-                command.ExecuteNonQuery();
-
-            }
-            else
-            {
-                m_dbConnection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
-                m_dbConnection.Open();
-            }
-
-            sql = "select * from highscores";
-            command = new SQLiteCommand(sql, m_dbConnection);
-
-            var reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                var name = reader["name"];
-                var score = reader["score"];
-                Console.WriteLine("Name: " + name + "\tScore: " + score);
-            }
-                
-
-            return "HWLLO";
+        public void Post(HighScore highscore)
+        {
+            _highscoreService.Create(highscore);
         }
     }
 }

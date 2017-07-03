@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SQLite;
 
 namespace RestWCFServiceLibrary.Repos
 {
-    class DatabaseConnection : IDatabaseConnection
+    internal class DatabaseConnection : IDatabaseConnection
     {
         private const string databaseName = "MyDatabase.sqlite";
 
@@ -33,11 +28,15 @@ namespace RestWCFServiceLibrary.Repos
                 connection.Open();
 
                 var sql = "SELECT name FROM sqlite_master WHERE type='table' AND name='" + tableName + "'";
-                var command = new SQLiteCommand(sql, connection);
-                var reader = command.ExecuteReader();
-                var exists = reader.HasRows;
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var exists = reader.HasRows;
 
-                return exists;
+                        return exists;
+                    }
+                }
             }
         }
     }

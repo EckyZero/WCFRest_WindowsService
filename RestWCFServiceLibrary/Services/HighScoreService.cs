@@ -8,11 +8,11 @@ using RestWCFServiceLibrary.Repos;
 
 namespace RestWCFServiceLibrary.Services
 {
-    class HighScoreService : IHighScoreService
+    internal class HighScoreService : IHighScoreService
     {
         private IHighScoreRepo _highscoreRepo;
 
-        public HighScoreService(IHighScoreRepo highscoreRepo)
+        internal HighScoreService(IHighScoreRepo highscoreRepo)
         {
             _highscoreRepo = highscoreRepo;
         }

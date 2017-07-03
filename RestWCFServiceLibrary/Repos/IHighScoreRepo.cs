@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RestWCFServiceLibrary.Repos
 {
-    interface IHighScoreRepo
+    internal interface IHighScoreRepo
     {
         void Create(HighScore highscore);
 

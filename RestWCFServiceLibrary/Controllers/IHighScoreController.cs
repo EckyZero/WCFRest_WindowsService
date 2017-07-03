@@ -24,7 +24,7 @@ namespace RestWCFServiceLibrary.Controllers
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "highscores/{id}")]
-        HighScore Get(int id);
+        HighScore Get(string id);
 
         [OperationContract]
         [WebInvoke(Method = "POST",

@@ -9,11 +9,11 @@ using RestWCFServiceLibrary.Services;
 
 namespace RestWCFServiceLibrary.Controllers
 {
-    class HighScoreController : IHighScoreController
+    public class HighScoreController : IHighScoreController
     {
         private IHighScoreService _highscoreService;
 
-        public HighScoreController(IHighScoreService highscoreService)
+        private HighScoreController(IHighScoreService highscoreService)
         {
             _highscoreService = highscoreService;
         }
@@ -25,9 +25,11 @@ namespace RestWCFServiceLibrary.Controllers
             return highscores;
         }
 
-        public HighScore Get(int id)
+        public HighScore Get(string id)
         {
-            var highscores = _highscoreService.Read(id);
+            // TODO: Input validation here
+            var formattedId = int.Parse(id);
+            var highscores = _highscoreService.Read(formattedId);
 
             return highscores;
         }
