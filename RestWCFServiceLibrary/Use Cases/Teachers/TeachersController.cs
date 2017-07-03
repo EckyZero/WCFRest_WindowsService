@@ -1,5 +1,6 @@
 ﻿using RestWCFServiceLibrary.Use_Cases.Teachers.Interfaces;
 using System;
+using System.Diagnostics;
 using System.Threading;
 
 namespace RestWCFServiceLibrary.Use_Cases.Teachers
@@ -12,6 +13,24 @@ namespace RestWCFServiceLibrary.Use_Cases.Teachers
         public TeachersController()
         {
             startTimer();
+
+            // Create the source, if it does not already exist.
+            if (!EventLog.SourceExists("MyDemoSource"))
+            {
+                EventLog.CreateEventSource("MyDemoSource", "MyDemoLog");
+                Console.WriteLine("CreatedEventSource");
+                Console.WriteLine("Exiting, execute the application a second time to use the source.");
+                // The source is created.  Exit the application to allow it to be registered.
+                return;
+            }
+
+            // Create an EventLog instance and assign its source.
+            EventLog log = new EventLog();
+            log.Source = "MyDemoSource";
+
+            // Write an informational entry to the event log.    
+            log.WriteEntry("Writing sample message to event log.");
+            Console.WriteLine("Writing sample message to console.");
         }
 
         private void startTimer()
