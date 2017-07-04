@@ -1,5 +1,7 @@
 ﻿using System.ServiceProcess;
 using System.ServiceModel;
+using RestWCFServiceLibrary.Use_Cases.HighScores;
+using RestWCFServiceLibrary.Use_Cases.Teachers;
 
 namespace RestWCFWinService
 {
@@ -20,11 +22,13 @@ namespace RestWCFWinService
 
         protected override void OnStart(string[] args)
         {
-            oStudentServiceHost = new ServiceHost(typeof(RestWCFServiceLibrary.StudentService));
+            oStudentServiceHost = new ServiceHost(typeof(HighScoresController));
             oStudentServiceHost.Open();
 
-            oTeacherServiceHost = new ServiceHost(typeof(RestWCFServiceLibrary.TeacherService));
+            oTeacherServiceHost = new ServiceHost(typeof(TeachersController));
             oTeacherServiceHost.Open();
+
+            RestWCFServiceLibrary.Application.Startup();
         }
 
         protected override void OnStop()
