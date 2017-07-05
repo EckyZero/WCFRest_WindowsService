@@ -8,19 +8,19 @@ namespace RestWCFServiceLibrary.Use_Cases.HighScores
 {
     class HighScoresRepo : IHighScoresRepo
     {
-        IDatabaseConnection _dbConnection;
+        IDatabase _database;
         const string _tableName = "highscores";
 
-        public HighScoresRepo(IDatabaseConnection dbConnection)
+        public HighScoresRepo(IDatabase database)
         {
-            _dbConnection = dbConnection;
+            _database = database;
 
             CreateTableIfNeeded();
         }
 
         public void Create(HighScore highscore)
         {
-            using (var connection = _dbConnection.GetDatabaseConnection())
+            using (var connection = _database.GetConnection())
             {
                 connection.Open();
 
@@ -37,7 +37,7 @@ namespace RestWCFServiceLibrary.Use_Cases.HighScores
         {
             HighScore highscore = null;
 
-            using (var connection = _dbConnection.GetDatabaseConnection())
+            using (var connection = _database.GetConnection())
             {
                 connection.Open();
 
@@ -64,7 +64,7 @@ namespace RestWCFServiceLibrary.Use_Cases.HighScores
         {
             List<HighScore> highscores = new List<HighScore>();
 
-            using (var connection = _dbConnection.GetDatabaseConnection())
+            using (var connection = _database.GetConnection())
             {
                 connection.Open();
 
@@ -90,7 +90,7 @@ namespace RestWCFServiceLibrary.Use_Cases.HighScores
 
         public void Delete(int id)
         {
-            using (var connection = _dbConnection.GetDatabaseConnection())
+            using (var connection = _database.GetConnection())
             {
                 connection.Open();
 
@@ -104,9 +104,9 @@ namespace RestWCFServiceLibrary.Use_Cases.HighScores
 
         private void CreateTableIfNeeded()
         {
-            if (!_dbConnection.TableExists(_tableName))
+            if (!_database.TableExists(_tableName))
             {
-                using (var connection = _dbConnection.GetDatabaseConnection())
+                using (var connection = _database.GetConnection())
                 {
                     connection.Open();
 

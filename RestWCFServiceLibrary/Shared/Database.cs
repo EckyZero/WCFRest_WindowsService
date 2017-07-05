@@ -2,7 +2,7 @@
 
 namespace RestWCFServiceLibrary.Repos
 {
-    internal class DatabaseConnection : IDatabaseConnection
+    internal class Database : IDatabase
     {
         private const string databaseName = "MyDatabase.sqlite";
 
@@ -14,16 +14,17 @@ namespace RestWCFServiceLibrary.Repos
             }
         }
 
-        public SQLiteConnection GetDatabaseConnection()
+        public SQLiteConnection GetConnection()
         {
-            var connection = new SQLiteConnection("Data Source=" + databaseName + "; Version=3;");
+            // Adding WAL to support prevent locking in situations with concurrent reads/writes
+            var connection = new SQLiteConnection("Data Source=" + databaseName + "; Version=3; PRAGMA journal_mode=WAL;");
 
             return connection;
         }
 
         public bool TableExists(string tableName)
         {
-            using (var connection = GetDatabaseConnection())
+            using (var connection = GetConnection())
             {
                 connection.Open();
 

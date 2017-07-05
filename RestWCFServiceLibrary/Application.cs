@@ -25,7 +25,7 @@ namespace RestWCFServiceLibrary
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<DatabaseConnection>().As<IDatabaseConnection>();
+            builder.RegisterType<Database>().As<IDatabase>();
             builder.RegisterType<HighScoresRepo>().As<IHighScoresRepo>();
             builder.RegisterType<HighScoresService>().As<IHighScoresService>();
             builder.RegisterType<HighScoresController>().As<IHighScoresController>();
@@ -40,7 +40,7 @@ namespace RestWCFServiceLibrary
         {
             using (var scope = container.BeginLifetimeScope())
             {
-                var databaseConnection = scope.Resolve<IDatabaseConnection>();
+                var databaseConnection = scope.Resolve<IDatabase>();
 
                 databaseConnection.CreateDatabase();
             }
