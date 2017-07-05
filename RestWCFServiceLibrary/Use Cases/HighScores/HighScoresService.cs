@@ -8,7 +8,7 @@ namespace RestWCFServiceLibrary.Use_Cases.HighScores
     {
         private IHighScoresRepo _highscoreRepo;
 
-        internal HighScoresService(IHighScoresRepo highscoreRepo)
+        public HighScoresService(IHighScoresRepo highscoreRepo)
         {
             _highscoreRepo = highscoreRepo;
         }
@@ -30,7 +30,7 @@ namespace RestWCFServiceLibrary.Use_Cases.HighScores
             return highscore;
         }
 
-        public IEnumerable<HighScore> ReadAll()
+        public IList<HighScore> ReadAll()
         {
             var highscores = _highscoreRepo.ReadAll();
 

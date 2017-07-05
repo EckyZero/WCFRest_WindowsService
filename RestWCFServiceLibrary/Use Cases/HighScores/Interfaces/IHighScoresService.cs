@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace RestWCFServiceLibrary.Use_Cases.HighScores.Interfaces
 {
-    internal interface IHighScoresService
+    public interface IHighScoresService
     {
         void Create(HighScore highscore);
 
         HighScore Read(int id);
 
-        IEnumerable<HighScore> ReadAll();
+        IList<HighScore> ReadAll();
 
         void Delete(int id);
     }

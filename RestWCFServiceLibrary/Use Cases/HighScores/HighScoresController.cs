@@ -12,13 +12,18 @@ namespace RestWCFServiceLibrary.Use_Cases.HighScores
         private HighScoresController()
         {
             // TODO: Replace this once DI is setup
-            var database = new DatabaseConnection();
+            var database = new Database();
             var highscoreRepo = new HighScoresRepo(database);
 
             _highscoreService = new HighScoresService(highscoreRepo);
         }
 
-        public IEnumerable<HighScore> GetAll()
+        public HighScoresController(IHighScoresService highscoreService)
+        {
+            _highscoreService = highscoreService;
+        }
+
+        public IList<HighScore> GetAll()
         {
             var highscores = _highscoreService.ReadAll();
 

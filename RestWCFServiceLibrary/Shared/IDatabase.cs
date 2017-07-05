@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace RestWCFServiceLibrary.Repos
 {
-    internal interface IDatabaseConnection
+    public interface IDatabase
     {
         void CreateDatabase();
 
-        SQLiteConnection GetDatabaseConnection();
+        SQLiteConnection GetConnection();
 
         bool TableExists(string tableName);
     }
