@@ -18,7 +18,12 @@ namespace RestWCFServiceLibrary.Use_Cases.HighScores
             _highscoreService = new HighScoresService(highscoreRepo);
         }
 
-        public IEnumerable<HighScore> GetAll()
+        public HighScoresController(IHighScoresService highscoreService)
+        {
+            _highscoreService = highscoreService;
+        }
+
+        public IList<HighScore> GetAll()
         {
             var highscores = _highscoreService.ReadAll();
 

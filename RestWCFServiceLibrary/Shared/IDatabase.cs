@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RestWCFServiceLibrary.Repos
 {
-    internal interface IDatabaseConnection
+    public interface IDatabaseConnection
     {
         void CreateDatabase();
 

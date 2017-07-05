@@ -79,10 +79,10 @@
     <Compile Include="Use Cases\Teachers\Interfaces\ITeachersController.cs" />
     <Compile Include="Use Cases\HighScores\Models\HighScore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shared\DatabaseConnection.cs" />
+    <Compile Include="Shared\Database.cs" />
     <Compile Include="Use Cases\HighScores\HighScoresRepo.cs" />
     <Compile Include="Use Cases\HighScores\Interfaces\IHighScoresRepo.cs" />
-    <Compile Include="Shared\IDatabaseConnection.cs" />
+    <Compile Include="Shared\IDatabase.cs" />
     <Compile Include="Use Cases\HighScores\HighScoresController.cs" />
     <Compile Include="Application.cs" />
     <Compile Include="Use Cases\HighScores\HighScoresService.cs" />

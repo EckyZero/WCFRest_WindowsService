@@ -11,7 +11,7 @@ namespace RestWCFServiceLibrary.Use_Cases.HighScores
         IDatabaseConnection _dbConnection;
         const string _tableName = "highscores";
 
-        internal HighScoresRepo(IDatabaseConnection dbConnection)
+        public HighScoresRepo(IDatabaseConnection dbConnection)
         {
             _dbConnection = dbConnection;
 
@@ -60,7 +60,7 @@ namespace RestWCFServiceLibrary.Use_Cases.HighScores
             return highscore;
         }
 
-        public IEnumerable<HighScore> ReadAll()
+        public IList<HighScore> ReadAll()
         {
             List<HighScore> highscores = new List<HighScore>();
 

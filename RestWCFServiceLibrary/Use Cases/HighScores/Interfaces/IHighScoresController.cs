@@ -13,7 +13,7 @@ namespace RestWCFServiceLibrary.Use_Cases.HighScores.Interfaces
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "/")]
-        IEnumerable<HighScore> GetAll();
+        IList<HighScore> GetAll();
 
         [OperationContract]
         [WebInvoke(Method = "GET",
