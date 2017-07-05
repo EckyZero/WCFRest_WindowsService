@@ -14,23 +14,23 @@ namespace RestWCFServiceLibrary.Use_Cases.Teachers
         {
             startTimer();
 
-            // Create the source, if it does not already exist.
+            // Create the source for the events to be logged, if it does not already exist
             if (!EventLog.SourceExists("MyDemoSource"))
             {
                 EventLog.CreateEventSource("MyDemoSource", "MyDemoLog");
-                Console.WriteLine("CreatedEventSource");
+                Console.WriteLine("Created Event Source");
                 Console.WriteLine("Exiting, execute the application a second time to use the source.");
-                // The source is created.  Exit the application to allow it to be registered.
+                // The source is created.  Exit the application to allow it to be registered (doesn't happen automatically).
                 return;
             }
 
-            // Create an EventLog instance and assign its source.
+            // Create an EventLog instance and assign its source
             EventLog log = new EventLog();
             log.Source = "MyDemoSource";
 
-            // Write an informational entry to the event log.    
-            log.WriteEntry("Writing sample message to event log.");
-            Console.WriteLine("Writing sample message to console.");
+            // Write an information and error entry to the event log  
+            log.WriteEntry("Writing sample information message to event log.", EventLogEntryType.Information);
+            log.WriteEntry("Writing sample error message to event log.", EventLogEntryType.Error);
         }
 
         private void startTimer()
