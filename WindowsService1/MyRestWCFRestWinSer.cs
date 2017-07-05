@@ -22,7 +22,9 @@ namespace RestWCFWinService
 
         protected override void OnStart(string[] args)
         {
+
             oStudentServiceHost = new ServiceHost(typeof(HighScoresController));
+
             oStudentServiceHost.Open();
 
             oTeacherServiceHost = new ServiceHost(typeof(TeachersController));
