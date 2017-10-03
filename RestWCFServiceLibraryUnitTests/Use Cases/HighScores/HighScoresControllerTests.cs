@@ -17,8 +17,8 @@ namespace RestWCFServiceLibraryUnitTests.Use_Cases.HighScores
             var mockService = new Mock<IHighScoresService>();
             var mockResults = new List<HighScore>()
             {
-                new HighScore("Clark Kent", 1),
-                new HighScore("Bruce Wayne", 2)
+                new HighScore() { Name = "Clark Kent", Score = 1 },
+                new HighScore() { Name = "Bruce Wayne", Score = 2 },
             };
 
             mockService.Setup(service => service.ReadAll())
@@ -43,7 +43,7 @@ namespace RestWCFServiceLibraryUnitTests.Use_Cases.HighScores
         public void Test_Get()
         {
             var mockService = new Mock<IHighScoresService>();
-            var mockResult = new HighScore("Diana Prince", 1);
+            var mockResult = new HighScore() { Name = "Diana Prince", Score = 1 };
 
             mockService.Setup(service => service.Read(1))
                         .Returns(mockResult);
@@ -66,7 +66,7 @@ namespace RestWCFServiceLibraryUnitTests.Use_Cases.HighScores
         public void Test_Get_Exception()
         {
             var mockService = new Mock<IHighScoresService>();
-            var mockResult = new HighScore("Diana Prince", 1);
+            var mockResult = new HighScore() { Name = "Diana Prince", Score = 1 };
             var controller = new HighScoresController(mockService.Object);
 
             controller.Get("Natasha Romanova");
@@ -82,7 +82,7 @@ namespace RestWCFServiceLibraryUnitTests.Use_Cases.HighScores
             mockService.Setup(service => service.Create(It.IsAny<HighScore>()));
 
             var controller = new HighScoresController(mockService.Object);
-            var highScore = new HighScore("Peter Parker", 1);
+            var highScore = new HighScore() { Name = "Peter Parker", Score = 1 };
 
             controller.Post(highScore);
 
@@ -95,8 +95,8 @@ namespace RestWCFServiceLibraryUnitTests.Use_Cases.HighScores
             var mockService = new Mock<IHighScoresService>();
             var mockResults = new List<HighScore>()
             {
-                new HighScore("Clark Kent", 1),
-                new HighScore("Bruce Wayne", 2)
+                new HighScore() { Name = "Clark Kent", Score = 1 },
+                new HighScore() { Name = "Bruce Wayne", Score = 1 }
             };
 
             mockService.Setup(service => service.Delete(It.IsAny<int>()))
