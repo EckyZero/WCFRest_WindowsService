@@ -1,19 +1,31 @@
 ﻿using Autofac;
-using RestWCFServiceLibrary.Repos;
+using LiteDB;
 using RestWCFServiceLibrary.Use_Cases.HighScores;
 using RestWCFServiceLibrary.Use_Cases.HighScores.Interfaces;
 using RestWCFServiceLibrary.Use_Cases.Teachers;
 using RestWCFServiceLibrary.Use_Cases.Teachers.Interfaces;
+using System;
 
 namespace RestWCFServiceLibrary
 {
     public static class Application
     {
+        private static LiteDatabase _database;
+
+        public static LiteDatabase Database
+        {
+            get
+            {
+                return _database;
+            }
+        }
+
         public static void Startup()
         {
             var container = SetupIoC();
 
-            SetupDatabase(container);
+            SetupIoC();
+            SetupDatabase();
         }
 
         public static void Destroy()
@@ -25,7 +37,6 @@ namespace RestWCFServiceLibrary
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<Database>().As<IDatabase>();
             builder.RegisterType<HighScoresRepo>().As<IHighScoresRepo>();
             builder.RegisterType<HighScoresService>().As<IHighScoresService>();
             builder.RegisterType<HighScoresController>().As<IHighScoresController>();
@@ -36,14 +47,9 @@ namespace RestWCFServiceLibrary
             return container;
         }
 
-        private static void SetupDatabase(IContainer container)
+        private static void SetupDatabase()
         {
-            using (var scope = container.BeginLifetimeScope())
-            {
-                var databaseConnection = scope.Resolve<IDatabase>();
-
-                databaseConnection.CreateDatabase();
-            }
+            _database = new LiteDatabase("WcfRestfulWithWindowsHostDemo.db");
         }
     }
 }

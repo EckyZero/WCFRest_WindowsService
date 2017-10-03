@@ -1,5 +1,4 @@
-﻿using RestWCFServiceLibrary.Repos;
-using RestWCFServiceLibrary.Use_Cases.HighScores.Interfaces;
+﻿using RestWCFServiceLibrary.Use_Cases.HighScores.Interfaces;
 using RestWCFServiceLibrary.Use_Cases.HighScores.Models;
 using System.Collections.Generic;
 
@@ -11,9 +10,7 @@ namespace RestWCFServiceLibrary.Use_Cases.HighScores
 
         private HighScoresController()
         {
-            // TODO: Replace this once DI is setup
-            var database = new Database();
-            var highscoreRepo = new HighScoresRepo(database);
+            var highscoreRepo = new HighScoresRepo();
 
             _highscoreService = new HighScoresService(highscoreRepo);
         }
