@@ -108,9 +108,6 @@ namespace RestWCFServiceLibraryUnitTests.Use_Cases.HighScores
 
             controller.Delete("1");
             mockService.Verify(service => service.Delete(It.IsAny<int>()), Times.Once());
-
-            Assert.IsTrue(mockResults.Count == 1);
-            Assert.IsTrue(mockResults[0].Name.Equals("Bruce Wayne"));
         }
 
         [TestMethod]
