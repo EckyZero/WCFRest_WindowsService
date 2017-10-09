@@ -12,6 +12,24 @@
     <frameworkAssemblies>
     </frameworkAssemblies>
     <dependencies>
+		<dependency id="Autofac" version="4.6.0.0" />
+		<dependency id="EntityFramework" version="6.0.0.0" />
+		<dependency id="EntityFramework.SqlServer" version="6.0.0.0" />
+		<dependency id="Microsoft.CSharp" version="4.0.0.0" />
+		<dependency id="Newtonsoft.Json" version="10.0.0.0" />
+		<dependency id="RestWCFServiceLibrary" version="1.0.0.0" />
+		<dependency id="System" version="4.0.0.0" />
+		<dependency id="System.ComponentModel.DataAnnotations.dll" version="4.0.0.0" />
+		<dependency id="System.Configuration.Install.dll" version="4.0.0.0" />
+		<dependency id="System.Core" version="4.0.0.0" />
+		<dependency id="System.Data" version="4.0.0.0" />
+		<dependency id="System.Data.DataSetExtensions" version="4.0.0.0" />
+		<dependency id="System.Management" version="4.0.0.0" />
+		<dependency id="System.Net.Http.dll" version="4.0.0.0" />
+		<dependency id="System.ServiceModel" version="4.0.0.0" />
+		<dependency id="System.ServiceProcess" version="4.0.0.0" />
+		<dependency id="System.Xml" version="4.0.0.0" />
+		<dependency id="System.Xml.Linq" version="4.0.0.0" />
     </dependencies> 
   </metadata>
 </package>
