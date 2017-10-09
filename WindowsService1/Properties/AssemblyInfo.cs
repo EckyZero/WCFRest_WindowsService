@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
+[assembly: AssemblyInformationalVersion("1.0.1-beta.0917d95390880b1be64dd26fddc5be4dcc19605e")]
 [assembly: AssemblyTitle("RestWCFWinService")]
 [assembly: AssemblyDescription("Test implementation of the Data Manager")]
 [assembly: AssemblyConfiguration("")]
