@@ -9,10 +9,8 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>Copyright 2017 $author$</copyright>
-    <frameworkAssemblies>
-    </frameworkAssemblies>
 	<files>
-		<file src="bin\Release\**" target="*" />
+		<file src="bin\Release\**" target="../" />
 	</files>
   </metadata>
 </package>
